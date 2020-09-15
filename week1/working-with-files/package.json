@@ -1,0 +1,16 @@
+{
+  "name": "working-with-files",
+  "version": "1.0.0",
+  "description": "Working with the file system",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
