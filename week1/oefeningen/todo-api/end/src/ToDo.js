@@ -3,7 +3,7 @@
  */
 
 const fs = require('fs');
-const { v4: uuidv4 } = require('uuid');
+const ToDoItem = require('./ToDoItem');
 
 class ToDo {
   constructor(filename) {
@@ -18,15 +18,8 @@ class ToDo {
     // get the todo list
     const todos = await this.get();
 
-    // create a new todo item
-    const todo = {
-      id: uuidv4(),
-      done: false,
-      description
-    }
-
     // push in our existing array
-    todos.push(todo);
+    todos.push(new ToDoItem(description));
 
     // save the list
     await this.save(todos);
@@ -70,7 +63,9 @@ class ToDo {
     return new Promise(resolve => {
       fs.readFile(this.filename, 'utf8', (e, data) => {
         if (e) return resolve([]);
-        return resolve(JSON.parse(data));
+        const jsonData = JSON.parse(data);
+        const castedObjects = jsonData.map((obj) => Object.assign(new ToDoItem, obj));
+        return resolve(castedObjects);
       });
     });
   }

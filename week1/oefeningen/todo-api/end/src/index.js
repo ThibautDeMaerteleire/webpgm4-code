@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 // import internal lib
-const ToDo = require('./todo.js');
+const ToDo = require('./ToDo.js');
 
 // import CRUD actions
 const {
