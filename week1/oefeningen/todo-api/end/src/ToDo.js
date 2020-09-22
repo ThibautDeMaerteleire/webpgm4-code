@@ -62,10 +62,11 @@ class ToDo {
   get() {
     return new Promise(resolve => {
       fs.readFile(this.filename, 'utf8', (e, data) => {
-        if (e) return resolve([]);
+        if (e) resolve([]);
         const jsonData = JSON.parse(data);
+        // Parsing [Object object] to [ToDoItem object]
         const castedObjects = jsonData.map((obj) => Object.assign(new ToDoItem, obj));
-        return resolve(castedObjects);
+        resolve(castedObjects);
       });
     });
   }
