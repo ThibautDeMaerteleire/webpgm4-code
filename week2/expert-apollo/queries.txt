@@ -1,0 +1,64 @@
+// ---
+// normal query
+// ---
+{
+	books {
+    id
+    authors {
+      name
+  	}
+  }
+}
+
+// ---
+// Sending paramaters
+// ---
+{
+	book(id: "a") {
+    id
+    authors {
+      name
+  	}
+  }
+}
+
+// ---
+// Book Mutation
+// ---
+mutation AddBook {
+	addBook(id: "4", title: "Alice in Wonderland", releaseDate: 1444341600000) {
+    id
+    title
+    releaseDate
+  }
+}
+
+// ---
+// Book Mutation With BookInput
+// ---
+mutation AddBook {
+	addBook(book: { id: "4", title: "Alice in Wonderland", releaseDate: 1444341600000 }) {
+    id
+    title
+    releaseDate
+  }
+}
+
+// ---
+// Book Mutation With BookInput & AuthorInput
+// ---
+mutation AddBook {
+	addBook(
+    book: {
+    	id: "4",
+    	title: "Alice in Wonderland",
+    	releaseDate: 1444341600000,
+      authors: { id:"1" }
+    })
+  {
+    id
+    title
+    releaseDate
+    authors {name}
+  }
+}

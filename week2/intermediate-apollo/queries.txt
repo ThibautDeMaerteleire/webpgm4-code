@@ -1,0 +1,23 @@
+// ---
+// normal query
+// ---
+{
+	books {
+    id
+    authors {
+      name
+  	}
+  }
+}
+
+// ---
+// Sending paramaters
+// ---
+{
+	book(id: "a") {
+    id
+    authors {
+      name
+  	}
+  }
+}
