@@ -1,4 +1,3 @@
-const { Mongoose } = require('mongoose');
 /**
  * The Mutation Resolvers
  */
