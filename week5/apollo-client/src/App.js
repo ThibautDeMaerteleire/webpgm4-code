@@ -1,7 +1,6 @@
 import React from 'react';
 import { useError } from './Hooks';
 import { gql, useQuery } from '@apollo/client';
-import './App.css';
 import Register from './Register';
 
 const USERS = gql`
