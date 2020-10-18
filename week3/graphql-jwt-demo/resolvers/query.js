@@ -38,7 +38,11 @@ module.exports = {
     users: (parent, params, context) => {
       if(context.userId === '') throw new AuthenticationError('Must authenticate!');
       else return User.find();
-      // return User.find();
+    },
+
+    user: (parent, { id }, context) => {
+      if(context.userId === '') throw new AuthenticationError('Must authenticate!');
+      else return User.findOne({ _id: id });
     }
   },
 }
