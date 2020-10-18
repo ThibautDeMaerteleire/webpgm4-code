@@ -5,6 +5,7 @@
 const { User } = require('../mongo/models');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const { AuthenticationError } = require('apollo-server');
 
 module.exports = {
   Query: {
@@ -35,8 +36,9 @@ module.exports = {
     },
 
     users: (parent, params, context) => {
-      if(context.userId === '') return { status: "User is not allowed!" }
+      if(context.userId === '') throw new AuthenticationError('Must authenticate!');
       else return User.find();
+      // return User.find();
     }
   },
 }
