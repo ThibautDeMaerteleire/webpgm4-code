@@ -34,9 +34,9 @@ module.exports = {
       }
     },
 
-    doingSomething: (parent, params, context) => {
+    users: (parent, params, context) => {
       if(context.userId === '') return { status: "User is not allowed!" }
-      else return { status: "User is allowed! "}
+      else return User.find();
     }
   },
 }

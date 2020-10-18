@@ -113,6 +113,9 @@ const queryResolvers = {
   },
 
   Book: {
+    title: (parent, args, context) => {
+      return "Mijn Titel: " + parent.title
+    },
     authors: (parent, args, context) => {
       const authorIds = parent.authors.map(author => author.id);
       return authors.filter(author => authorIds.includes(author.id));
