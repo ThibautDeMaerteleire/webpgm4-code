@@ -34,6 +34,7 @@ module.exports = {
 
         // add a song to the playlist
         playlist.owner = userId;
+        playlist.editedOn = new Date();
 
         // save and return
         return await playlist.save();
@@ -60,6 +61,7 @@ module.exports = {
 
         // add a song to the playlist
         playlist.songs.push(song);
+        playlist.editedOn = new Date();
         const updatedPlaylist = await playlist.save();
 
         // get the new song from updated playlist
