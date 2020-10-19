@@ -18,7 +18,8 @@ module.exports = {
           songs: []
         });
       } catch(e) {
-        throw new ApolloError(`Something went wrong: ${e.message}`);
+        if(e.extensions.code === 'UNAUTHENTICATED') throw e;
+        else throw new ApolloError(e.message);
       }
     },
 
