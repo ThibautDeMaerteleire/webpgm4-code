@@ -12,8 +12,7 @@ module.exports = {
       const { email, password } = user;
 
       // validate if the user exists
-      const foundUser = await User.findOne({ email });
-      if(foundUser) throw new Error('User already exists.')
+      if(await User.exists({ email })) throw new Error('User already exists.')
 
       // create hash
       const hashedPassword = bcrypt.hashSync(password, 12);
